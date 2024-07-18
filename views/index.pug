@@ -1,0 +1,212 @@
+doctype html
+html
+  head
+    title Population Report
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+    style.
+      body {
+        background: url('https://as2.ftcdn.net/v2/jpg/06/02/56/83/1000_F_602568370_1J7AHYoSdaUthk704G8Mv8KOiGfZCH7I.jpg') no-repeat center center fixed;
+        background-size: cover;
+        background-color: rgba(255, 230, 230, 0.5);
+        background-attachment: fixed;
+        font-family: 'Arial', sans-serif;
+        overflow-x: hidden;
+        animation: backgroundAnimation 15s infinite alternate;
+      }
+
+      @keyframes backgroundAnimation {
+        0% {
+          background-position: center top;
+        }
+        100% {
+          background-position: center bottom;
+        }
+      }
+
+      .container {
+        margin-top: 50px;
+      }
+      .btn-toggle {
+        margin: 10px;
+        border-radius: 10px;
+        background-color: #ff9999;
+        color: black;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        padding: 10px 20px;
+        border: none;
+      }
+      .btn-toggle:hover {
+        background-color: #ff6666;
+        transform: scale(1.05);
+        cursor: pointer;
+      }
+      .btn-toggle-container {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .form-section {
+        display: none;
+        background-color: #ff8080;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .form-section.active {
+        display: block;
+      }
+      .report-container {
+        background-color: #ff8080;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .info-section {
+        background-color: rgba(255, 230, 230, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 18px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .info-section h3 {
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #333;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      }
+      .info-section p {
+        margin-bottom: 15px;
+        color: #555;
+      }
+      .info-section ul {
+        text-align: left;
+        margin-left: 30px;
+        margin-top: 20px;
+        list-style: none;
+        padding: 0;
+      }
+      .info-section li {
+        font-size: 16px;
+        margin-bottom: 10px;
+        color: #666;
+      }
+
+      .info-section li::before {
+        content: '➤';
+        color: #ff6666;
+        margin-right: 10px;
+        font-size: 20px;
+      }
+  body
+    .container
+      h1.text-center.mb-4(style='font-size: 36px; font-weight: bold; text-decoration: underline; font-style: italic; font-family: "Comic Sans MS", cursive;') Population Report
+      .info-section
+        h3.mb-3 About This Application
+        p.mb-4 This application provides detailed population reports for countries and cities around the world. You can generate reports based on various criteria, such as the top populated countries or cities in different regions, continents, or globally.
+        ul
+          li Generates population reports faster than rabbits multiply.
+          li Finds the world's most populous places quicker than you can say "population boom!"
+          li Delivers demographic insights smoother than jazz on a lazy Sunday.
+          li Calculates city stats with more precision than your favorite pizza joint.
+          li It's so good, it even knows how many grains of sand are on your favorite beach!
+      
+      .btn-toggle-container
+        button.btn.btn-primary.btn-toggle(type='button', data-target='#country-form') Country Specifications
+        button.btn.btn-secondary.btn-toggle(type='button', data-target='#city-form') City Specifications
+
+      #country-form.form-section
+        h2 Country Specifications
+        form(method='get', action='/')
+          .form-group
+            label(for='n') Top N Countries:
+            input.form-control(type='number', name='n', id='n')
+          .form-group
+            label(for='reportType') Report Type:
+            select.form-control(name='reportType', id='reportType', required)
+              option(value='global') Global
+              option(value='continent') By Continent
+              option(value='region') By Region
+          .form-group
+            label(for='continent') Continent (optional):
+            input.form-control(type='text', name='continent', id='continent')
+          .form-group
+            label(for='region') Region (optional):
+            input.form-control(type='text', name='region', id='region')
+          button.btn.btn-primary(type='submit') Get Country Results
+
+      #city-form.form-section
+        h2 City Specifications
+        form(method='get', action='/')
+          .form-group
+            label(for='cityN') Top N Cities:
+            input.form-control(type='number', name='cityN', id='cityN')
+          .form-group
+            label(for='cityReportType') City Report Type:
+            select.form-control(name='cityReportType', id='cityReportType', required)
+              option(value='global') Global
+              option(value='continent') By Continent
+              option(value='region') By Region
+              option(value='country') By Country
+              option(value='district') By District
+          .form-group
+            label(for='cityContinent') Continent (optional):
+            input.form-control(type='text', name='cityContinent', id='cityContinent')
+          .form-group
+            label(for='cityRegion') Region (optional):
+            input.form-control(type='text', name='cityRegion', id='cityRegion')
+          .form-group
+            label(for='cityCountry') Country (optional):
+            input.form-control(type='text', name='cityCountry', id='cityCountry')
+          .form-group
+            label(for='cityDistrict') District (optional):
+            input.form-control(type='text', name='cityDistrict', id='cityDistrict')
+          button.btn.btn-primary(type='submit') Get City Results
+
+      if results
+        .report-container
+          h2.text-center.mb-4 Results
+          table.table.table-striped.table-bordered
+            thead.thead-dark
+              tr
+                if results[0].Code
+                  th Code
+                th Name
+                th Continent
+                th Region
+                th Population
+                if results[0].Capital
+                  th Capital
+            tbody
+              each result in results
+                tr
+                  if result.Code
+                    td= result.Code
+                  td= result.Name
+                  td= result.Continent
+                  td= result.Region
+                  td= result.Population
+                  if result.Capital
+                    td= result.Capital
+      if error
+        p.text-danger= error
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
+    script.
+      $(document).ready(function() {
+        $('.btn-toggle').click(function() {
+          var target = $(this).data('target');
+          $('.form-section').removeClass('active');
+          $(target).addClass('active');
+        });
+      });
