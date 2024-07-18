@@ -1,0 +1,39 @@
+doctype html
+html
+  head
+    title Top N Countries
+  body
+    h1 Top N Countries
+    form(method='get', action='/top-countries')
+      label(for='n') Top N Countries:
+      input(type='number', name='n', id='n', required)
+      br
+      label(for='continent') Continent (optional):
+      input(type='text', name='continent', id='continent')
+      br
+      label(for='region') Region (optional):
+      input(type='text', name='region', id='region')
+      br
+      button(type='submit') Get Results
+    if results
+      h2 Results
+      table
+        thead
+          tr
+            th Code
+            th Name
+            th Continent
+            th Region
+            th Population
+            th Capital
+        tbody
+          each country in results
+            tr
+              td= country.Code
+              td= country.Name
+              td= country.Continent
+              td= country.Region
+              td= country.Population
+              td= country.Capital
+    if error
+      p.error= error

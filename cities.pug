@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    title Cities
+  body
+    h1 Cities
+    form(method='get', action='/cities')
+      label(for='sort') Sort by:
+      select(name='sort', id='sort')
+        option(value='Population') Population
+        option(value='Name') Name
+        option(value='Country') Country
+        option(value='District') District
+      button(type='submit') Sort
+    table
+      thead
+        tr
+          th Name
+          th Country
+          th District
+          th Population
+      tbody
+        each city in results
+          tr
+            td= city.Name
+            td= city.Country
+            td= city.District
+            td= city.Population
